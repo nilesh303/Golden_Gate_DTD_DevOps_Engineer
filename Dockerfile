@@ -4,7 +4,7 @@ VOLUME /tmp
 
 EXPOSE 8888
 
-ARG JAR_FILE=/golden_gate_bootcamp/Golden_Gate_DTD_DevOps_Engineer/target/cicd-pipeline-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=/target/cicd-pipeline-0.0.1-SNAPSHOT.jar
 
 COPY ${JAR_FILE} cicd-pipeline-0.0.1-SNAPSHOT.jar
 

@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.MathsTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.03 s <<< FAILURE! - in com.MathsTest
-getwaist  Time elapsed: 0.016 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <30 is your bmi> but was: <10 is your waist size>
-	at com.MathsTest.getwaist(MathsTest.java:36)
-
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in com.MathsTest
