@@ -1,6 +1,10 @@
+version: '3' 
+
+services:
+
 db:
   image: mysql:latest
-  environment:
+   environment:
     MYSQL_ROOT_PASSWORD: testpass
     MYSQL_DATABASE: test_db
     MYSQL_USER: test_user
@@ -12,14 +16,13 @@ db:
 
 web:
   image: tomcat:latest
-  
-  environment:
+   environment:
     JDBC_URL: jdbc:mysql://db:3306/test_db?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
     JDBC_USER: test_user
     JDBC_PASS: test_user_db_pass
-  ports:
+   ports:
    - "80:8080"
-  volumes:
+   volumes:
    - ./tomcat/webapps:/usr/local/tomcat/webapps
-  links:
+   links:
     - db
