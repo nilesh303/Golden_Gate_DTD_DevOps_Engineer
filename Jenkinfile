@@ -18,7 +18,7 @@ node {
             }
             
         stage('Docker Image Run')  {
-            sh "${dockerCMD} run -di -p 8181:8080 nilesh401/golden_gate_dtd_devops_engineer:0.3"
+//            sh "${dockerCMD} run -di -p 8181:8080 nilesh401/golden_gate_dtd_devops_engineer:0.3"
         }
         
         stage('Docker Image Push')  {
@@ -27,10 +27,10 @@ node {
             }    
         }
         
-//        stage ('Push to Cloud Foundry') { 
-//        pushToCloudFoundry cloudSpace: 'development', credentialsId: 'PCF', organization: 'nileshkumar.chhallani', target: 'https://api.run.pivotal.io/' {
-//            sh "cf push TEST-IMAGE --docker-image nilesh401/golden_gate_dtd_devops_engineer:0.3"
-//           }
-//        }
-            
+        stage ('Push to Cloud Foundry') { 
+            withCredentials([usernamePassword(credentialsId: 'PCF', passwordVariable: 'pass', usernameVariable: 'user')]) {
+            sh "cf login -a https://api.run.pivotal.io -u '${user}' -p '${pass}' -o nileshkumar.chhallani -s development"
+        }
+            sh "cf push spring_boot_image --docker-image nilesh401/golden_gate_dtd_devops_engineer:0.3"
+        }    
     }
