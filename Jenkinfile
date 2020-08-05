@@ -14,16 +14,16 @@ node {
             }
         
         stage('Docker Image Build') {
-            sh "sudo ${dockerCMD} build -t nilesh401/golden_gate_dtd_devops_engineer:0.3 ."
+            sh "${dockerCMD} build -t nilesh401/golden_gate_dtd_devops_engineer:0.3 ."
             }
             
         stage('Docker Image Run')  {
-//            sh "sudo ${dockerCMD} run -di -p 8181:8080 nilesh401/golden_gate_dtd_devops_engineer:0.3"
+//            sh "${dockerCMD} run -di -p 8181:8080 nilesh401/golden_gate_dtd_devops_engineer:0.3"
         }
         
         stage('Docker Image Push')  {
             withCredentials([string(credentialsId: 'nilesh401', variable: 'nilesh401')]) {
-             sh "sudo ${dockerCMD} push nilesh401/golden_gate_dtd_devops_engineer:0.3"                
+             sh "${dockerCMD} push nilesh401/golden_gate_dtd_devops_engineer:0.3"                
             }    
         }
         
