@@ -21,6 +21,13 @@ node {
 //            sh "${dockerCMD} run -di -p 8181:8080 nilesh401/golden_gate_dtd_devops_engineer:0.3"
         }
         
+        stage('Docker login')  {
+            withCredentials([string(credentialsId: 'nilesh401', variable: 'nilesh401')]) {
+             sh "${dockerCMD} login docker.io"                
+            }    
+        }
+
+
         stage('Docker Image Push')  {
             withCredentials([string(credentialsId: 'nilesh401', variable: 'nilesh401')]) {
              sh "${dockerCMD} push nilesh401/golden_gate_dtd_devops_engineer:0.3"                
