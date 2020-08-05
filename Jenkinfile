@@ -1,7 +1,7 @@
 node {
     
         def docker=tool name: 'Docker_Jenkins', type: 'dockerTool'
-        def dockerCMD = "$docker/bin/docker"     
+        def dockerCMD = "sudo $docker/bin/docker"     
     
         stage ('Code Checkout') {
             git credentialsId: 'nilesh303_github', url: 'https://github.com/nilesh303/Golden_Gate_DTD_DevOps_Engineer.git'
